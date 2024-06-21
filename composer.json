@@ -12,8 +12,8 @@
     "require": {
         "php": "^8.0",
         "illuminate/database": "^11.0",
-        "illuminate/pagination": "^11.11",
-        "illuminate/support": "^11.11",
+        "illuminate/pagination": "^11.0",
+        "illuminate/support": "^11.0",
         "laravel-zero/foundation": "^11.5"
     },
     "autoload": {
