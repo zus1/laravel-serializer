@@ -2,8 +2,8 @@
 
 namespace Zus1\Serializer\Event;
 
-use App\Services\Serializer\Serializer;
 use Illuminate\Foundation\Events\Dispatchable;
+use Zus1\Serializer\Serializer;
 
 class NormalizedDataEvent
 {

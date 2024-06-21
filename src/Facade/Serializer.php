@@ -15,6 +15,6 @@ class Serializer extends Facade
 {
     public static function getFacadeAccessor(): string
     {
-        return \App\Services\Serializer\Serializer::class;
+        return \Zus1\Serializer\Serializer::class;
     }
 }
