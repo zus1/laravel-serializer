@@ -3,7 +3,6 @@
     "description": "Serializer library for Laravel",
     "keywords": ["larave", "serilaizer", "php", "json"],
     "license": "MIT",
-    "version": "1.0.0.2",
     "authors": [
         {
             "name": "Mario Ožuška",
