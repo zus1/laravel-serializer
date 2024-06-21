@@ -1,0 +1,41 @@
+{
+    "name": "zus1/laravel-serializer",
+    "description": "Serializer library for Laravel",
+    "keywords": ["larave", "serilaizer", "php", "json"],
+    "license": "MIT",
+    "version": "1.0.0",
+    "authors": [
+        {
+            "name": "Mario Ožuška",
+            "email": "mario.ozuska@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "illuminate/database": "^11.11",
+        "illuminate/pagination": "^11.11",
+        "illuminate/support": "^11.11",
+        "laravel-zero/foundation": "^11.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zus1\\Serializer\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+        }
+    },
+    "extra": {
+        "laravel": {
+            "aliases": {
+                "Serializer": "Zus1\\Serializer\\Facades\\Serializer"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
