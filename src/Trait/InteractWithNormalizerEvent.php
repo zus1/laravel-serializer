@@ -6,7 +6,7 @@ use Zus1\Serializer\Event\NormalizedDataEvent;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-trait Eventable
+trait InteractWithNormalizerEvent
 {
     private array $normalizedData = [];
     private Collection|LengthAwarePaginator $collection;
@@ -21,17 +21,17 @@ trait Eventable
         $this->normalizedData = $normalizedData;
     }
 
-    public function setNormalizedCollection(Collection|LengthAwarePaginator $collection): void
+    public function setPaginatedCollection(LengthAwarePaginator $collection): void
     {
         $this->collection = $collection;
     }
 
-    public function getNormalizedCollection(): Collection|LengthAwarePaginator
+    public function getPaginatedCollection(): LengthAwarePaginator
     {
         return $this->collection;
     }
 
-    protected function withEventDispatch(array|Collection|LengthAwarePaginator $subject, string $className): array|Collection|LengthAwarePaginator
+    protected function withEventDispatch(array|LengthAwarePaginator $subject, string $className): array|Collection|LengthAwarePaginator
     {
         $this->setData($subject);
 
@@ -40,18 +40,18 @@ trait Eventable
         return $this->returnData($subject);
     }
 
-    private function setData(array|Collection|LengthAwarePaginator $subject): void
+    private function setData(array|LengthAwarePaginator $subject): void
     {
-        if($subject instanceof Collection || $subject instanceof LengthAwarePaginator) {
+        if($subject instanceof LengthAwarePaginator) {
             $this->collection = $subject;
         } else {
             $this->normalizedData = $subject;
         }
     }
 
-    private function returnData(array|Collection|LengthAwarePaginator $subject): array|Collection|LengthAwarePaginator
+    private function returnData(array|LengthAwarePaginator $subject): array|LengthAwarePaginator
     {
-        if($subject instanceof Collection || $subject instanceof LengthAwarePaginator) {
+        if($subject instanceof LengthAwarePaginator) {
             return $this->collection;
         } else {
             return $this->normalizedData;

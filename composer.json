@@ -29,7 +29,10 @@
         "laravel": {
             "aliases": {
                 "Serializer": "Zus1\\Serializer\\Facades\\Serializer"
-            }
+            },
+            "providers": [
+                "Zus1\\Serializer\\Providers\\LaraverlSerializerServiceProvider"
+            ]
         }
     },
     "config": {

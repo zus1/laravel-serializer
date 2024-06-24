@@ -2,8 +2,8 @@
 
 namespace Zus1\Serializer\Event;
 
+use Zus1\Serializer\Interface\NormalizerInterface;
 use Illuminate\Foundation\Events\Dispatchable;
-use Zus1\Serializer\Serializer;
 
 class NormalizedDataEvent
 {
@@ -13,14 +13,14 @@ class NormalizedDataEvent
      * Create a new event instance.
      */
     public function __construct(
-        private Serializer $serializer,
+        private NormalizerInterface $normalizer,
         private string $subjectClass,
     ){
     }
 
-    public function getSerializer(): Serializer
+    public function getNormalizer(): NormalizerInterface
     {
-        return $this->serializer;
+        return $this->normalizer;
     }
 
     public function getSubjectClass(): string

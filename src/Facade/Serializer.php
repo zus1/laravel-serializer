@@ -8,8 +8,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static array|Collection|LengthAwarePaginator normalize(Collection|Model|LengthAwarePaginator $subject, array|string $groups = [])
- * @method static string serialize(Collection|Model|LengthAwarePaginator $subject, array|string $groups = [])
+ * @method static array|LengthAwarePaginator normalize(Collection|Model|LengthAwarePaginator $subject, array|string $groups = [])
+ * @method static string serialize(Collection|Model|LengthAwarePaginator $subject, array|string $groups = [], string $type = '')
  */
 class Serializer extends Facade
 {
