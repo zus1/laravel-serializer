@@ -11,6 +11,7 @@
     ],
     "require": {
         "php": "^8.0",
+        "ext-http": "*",
         "illuminate/database": "^11.0",
         "illuminate/pagination": "^11.0",
         "illuminate/support": "^11.0",
