@@ -2,7 +2,6 @@
 
 namespace Zus1\Serializer;
 
-use HttpException;
 use Zus1\Serializer\Interface\NormalizerInterface;
 use Zus1\Serializer\Interface\SerializerInterface;
 use Illuminate\Database\Eloquent\Collection;
@@ -54,7 +53,7 @@ class Serializer
         }
 
         if(!Config::has('serializer.serializers.'.$serializerType)) {
-            throw new HttpException('Unknown serializer type '.$serializerType,500);
+            throw new \Exception('Unknown serializer type '.$serializerType,500);
         }
 
         return App::make(Config::get(sprintf('serializer.serializers.%s.class', $serializerType)));
