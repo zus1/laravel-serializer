@@ -31,7 +31,7 @@
                 "Serializer": "Zus1\\Serializer\\Facades\\Serializer"
             },
             "providers": [
-                "Zus1\\Serializer\\Providers\\LaraverlSerializerServiceProvider"
+                "Zus1\\Serializer\\Providers\\LaravelSerializerServiceProvider"
             ]
         }
     },
