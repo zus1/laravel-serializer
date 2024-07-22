@@ -3,6 +3,7 @@
 namespace Zus1\Serializer\Normalizer;
 
 use Zus1\Serializer\Attributes\Attributes;
+use Zus1\Serializer\Helper\Json;
 use Zus1\Serializer\Interface\NormalizerInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -68,8 +69,11 @@ class Normalizer implements NormalizerInterface
 
     private function handleNestedCollectionMapping(Model $model, string $key, array $groups, array &$includedAttributes): void
     {
-        /** @var Collection $collection */
-        $collection = $model->$key()->get();
+        /** @var ?Collection $collection */
+        $collection = $model->$key()->get() ?? $collection->$key;
+        if($collection === null) {
+            return;
+        }
 
         $includedAttributes[$key] = $this->normalize($collection, $groups, true);
     }
@@ -77,8 +81,11 @@ class Normalizer implements NormalizerInterface
 
     private function handleNestedModelMapping(Model $model, string $key, array $groups, array &$includedAttributes): void
     {
-        /** @var Model $nestedModel */
-        $nestedModel = $model->$key()->first();
+        /** @var ?Model $nestedModel */
+        $nestedModel = $model->$key()->first() ?? $model->$key;
+        if($nestedModel === null) {
+            return;
+        }
 
         $includedAttributes[$key] = $this->normalize($nestedModel, $groups, true);
     }
@@ -99,7 +106,7 @@ class Normalizer implements NormalizerInterface
         array_walk($mappings, function (array $mappingGroups, string $property) use(&$includedAttributes, $groups, $modelAttributes) {
             if(array_intersect($groups, $mappingGroups) !== []) {
                 if(array_key_exists($property, $modelAttributes)) {
-                    $includedAttributes[$property] = $modelAttributes[$property];
+                    $includedAttributes[$property] = Json::sanitize($modelAttributes[$property]);
                 }
             }
         });
